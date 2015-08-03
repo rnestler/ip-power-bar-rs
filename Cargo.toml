@@ -1,0 +1,9 @@
+[package]
+name = "ip-power-bar"
+version = "0.1.0"
+authors = ["sensirion-zh\rnestler <raphael.nestler@sensirion.com>"]
+
+[dependencies]
+hyper="*"
+docopt="*"
+rustc-serialize="*"
