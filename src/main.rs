@@ -8,11 +8,14 @@ use std::io::Read;
 use hyper::Client;
 
 static USAGE: &'static str = "
-Usage: ip_power_bar [-p PORT] [-h HOST] (get | (set <port> (on|off) ))
+Usage:
+    ip-power-bar [-p PORT] [-h HOST] (get | (set <port> (on|off) ))
+    ip-power-bar --help
 
 Options:
-    -p PORT    The port to listen on [default: 80].
-    -h HOST    The host to connect to [default: 192.168.10.100].
+    -p PORT     The port to listen on [default: 80].
+    -h HOST     The host to connect to [default: 192.168.10.100].
+    --help      Show this help
 ";
 
 #[derive(Deserialize, Debug)]
