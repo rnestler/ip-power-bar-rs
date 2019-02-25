@@ -1,6 +1,7 @@
 extern crate hyper;
 extern crate docopt;
-extern crate rustc_serialize;
+#[macro_use]
+extern crate serde_derive;
 
 use docopt::Docopt;
 use std::io::Read;
@@ -14,7 +15,7 @@ Options:
     -h HOST    The host to connect to [default: 192.168.10.100].
 ";
 
-#[derive(RustcDecodable, Debug)]
+#[derive(Deserialize, Debug)]
 struct Args {
     flag_p: u16,
     flag_h: String,
@@ -25,7 +26,7 @@ struct Args {
 }
 
 fn main() {
-    let args: Args = Docopt::new(USAGE).and_then(|d| d.decode())
+    let args: Args = Docopt::new(USAGE).and_then(|d| d.deserialize())
         .unwrap_or_else(|e| e.exit());
 
     println!("Connecting to {}:{}", args.flag_h, args.flag_p);
